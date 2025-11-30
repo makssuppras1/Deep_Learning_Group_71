@@ -1,0 +1,42 @@
+program: experiments/train_simple.py
+method: grid
+project: neural-network-numpy
+name: fashion_mnist_sweep_kasper
+
+metric:
+  name: val_loss
+  goal: minimize
+
+parameters:
+  optimizer:
+    values: [sgd, adam, rmsprop]
+  l2_lambda:
+    values: [0.01, 0.001, 0.0001]
+  learning_rate:
+    values: [0.01, 0.001, 0.0001]
+  hidden_layers:
+    values: [[64, 32, 16], [256, 128, 64, 32], [512, 256, 128, 64]]
+  batch_size:
+    value: 64
+  activation:
+    values: [relu, adam, sigmoid]
+  output_activation:
+    value: softmax
+  num_epochs:
+    value: 60
+  weight_init:
+    values: [he, random]
+  dropout_rate:
+    values: [0.2, 0.1]
+  num_epochs:
+    value: 40
+  dataset:
+    value: fashion_mnist
+  output_size:
+    value: 10
+  val_split:
+    value: 0.2
+  random_seed:
+    value: 42
+  use_wandb:
+    value: true
